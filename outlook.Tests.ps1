@@ -38,10 +38,126 @@ InModuleScope $ModuleName {
 
     Describe "$ModuleName : Get-OutlookCalendarItem" {
        
+        
+        # ----- Get Function Help
+
+        # ----- Pester to test Comment based help
+
+        # ----- http://www.lazywinadmin.com/2016/05/using-pester-to-test-your-comment-based.html
+
+        Context "Help" {
+
+
+
+            $H = Help Get-OutlookCalendarItem -Full
+
+
+
+            # ----- Help Tests
+
+            It "has Synopsis Help Section" {
+
+                 $H.Synopsis  | Should Not BeNullorEmpty
+
+            }
+
+
+
+            It "has Synopsis Help Section that it not start with the command name" {
+
+                $H.Synopsis | Should Not Match $H.Name
+
+            }
+
+
+
+            It "has Description Help Section" {
+
+                 $H.Description | Should Not BeNullorEmpty
+
+            }
+
+            It "has Parameters Help Section" {
+
+                 $H.Parameters.parameter  | Should Not BeNullorEmpty
+
+            }
+
+
+
+            # Examples
+
+            it "Example - Count should be greater than 0"{
+
+                 $H.examples.example  | Measure-Object | Select-Object -ExpandProperty Count | Should BeGreaterthan 0
+
+            }
+
+            
+
+            # Examples - Remarks (small description that comes with the example)
+
+            foreach ($Example in $H.examples.example)
+
+            {
+
+                it "Example - Remarks on $($Example.Title)"{
+
+                     $Example.remarks  | Should not BeNullOrEmpty
+
+                }
+
+            }
+
+
+
+            It "has Notes Help Section" {
+
+                 $H.alertSet  | Should Not BeNullorEmpty
+
+            }
+
+        } 
+
+        Mock -CommandName New-Object -ParameterFilter { $comobject } -MockWith {
+            $Obj = New-Object -TypeName PSObject
+            
+            $Obj | Add-Member -MemberType ScriptMethod -Name GetNameSpace -value {
+                Param ( $Source )
+
+                $GetDefaultFolder= New-Object -TypeName PSObject
+                $GetDefaultFolder | Add-Member -MemberType ScriptMethod -Name GetDefaultFolder -Value {
+                    $Item= New-Object -TypeName PSObject
+                    $Item | Add-Member -MemberType ScriptMethod -Name Item -Value {
+                        Write-Output (New-object -TypeName PSObject)
+                    }
+
+                    Write-Output $Item
+                }
+
+                Write-Output $GetDefaultFolder
+            }            
+            
+            Return $Obj
+        }
+
+        Context Execution {
+
+
+
+            It "SHould thow an error if outlook is not installed" {
+                Mock -CommandName New-Object -MockWith { Throw "error" }
+
+                { Get-OutlookCalendarItem }  | Should Throw
+            }
+        }
+
         Context Output {
             
             It "Should Return a calander object" {
-            } -Pending
+
+                Get-OutlookCalendarItem  | Should beoftype PSObject
+            } 
 
         }
     }
