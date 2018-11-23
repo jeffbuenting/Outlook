@@ -7,7 +7,7 @@
 
     [CmdletBinding()]
     Param (
-
+        [String]$BeginDate
     )
 
 }
