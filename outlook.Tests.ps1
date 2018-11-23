@@ -36,7 +36,7 @@ InModuleScope $ModuleName {
 
     Write-Output "`n`n"
 
-    Describe "$ModuleName : Get-OutlookCalanderItem" {
+    Describe "$ModuleName : Get-OutlookCalendarItem" {
        
         Context Output {
             

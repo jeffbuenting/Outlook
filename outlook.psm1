@@ -1,4 +1,4 @@
-﻿Function Get-OutlookCalenderItem {
+﻿Function Get-OutlookCalendarItem {
 
     <#
         .Synopsis
