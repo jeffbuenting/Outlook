@@ -127,12 +127,20 @@ InModuleScope $ModuleName {
 
                 $GetDefaultFolder= New-Object -TypeName PSObject
                 $GetDefaultFolder | Add-Member -MemberType ScriptMethod -Name GetDefaultFolder -Value {
-                    $Item= New-Object -TypeName PSObject
-                    $Item | Add-Member -MemberType ScriptMethod -Name Item -Value {
-                        Write-Output (New-object -TypeName PSObject)
+                    Param ( $FolderType )
+
+                    $Restrict = New-Object -TypeName PSObject
+                    $Restrict | Add-Member -MemberType ScriptMethod -Name Restrict -value {
+                        param ( $filter )
+
+                        Write-output ( New-Object -TypeName PSObject )
                     }
 
-                    Write-Output $Item
+
+                    $Items= New-Object -TypeName PSObject
+                    $Items | Add-Member -MemberType NoteProperty -Name Items -value $Restrict
+
+                    Write-Output $Items
                 }
 
                 Write-Output $GetDefaultFolder
@@ -145,18 +153,38 @@ InModuleScope $ModuleName {
 
 
 
-            It "SHould thow an error if outlook is not installed" {
+            It "SHould throw an error if outlook is not installed" {
                 Mock -CommandName New-Object -MockWith { Throw "error" }
 
                 { Get-OutlookCalendarItem }  | Should Throw
             }
+
+            It "Should throw an error if end date is included with begin date" {
+                { Get-OutlookCalendarItem -BeginDate (Get-Date) }  | Should Throw
+            } 
+
+            It "Should accept a date range" {
+                { Get-OutlookCalendarItem -BeginDate (Get-Date) -EndDate (get-date).adddays( -2) }  | Should Throw
+            } 
         }
 
         Context Output {
             
-            It "Should Return a calander object" {
+            It "Should Return a calendar object" {
 
-                Get-OutlookCalendarItem  | Should beoftype PSObject
+                Get-OutlookCalendarItem | Should beoftype PSObject
+            } 
+
+            It "Should Return a Calendar object when using a filter" {
+                Get-OutlookCalendarItem -Categories 'one'  | Should beoftype PSObject
+            } 
+
+            It "should return Calendar object when more than one categorie is included" {
+                Get-OutlookCalendarItem -Categories 'one','two'  | Should beoftype PSObject
+            } 
+
+            It "Should accept a date range and return a Calendar Object" {
+                Get-OutlookCalendarItem -BeginDate (Get-Date) -EndDate (get-date).adddays( -2) -verbose | Should beoftype PSObject
             } 
 
         }
