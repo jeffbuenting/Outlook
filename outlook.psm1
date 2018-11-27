@@ -113,7 +113,7 @@
             }
 
             # ----- Remove the last ' OR '
-            $Filter.Trim( ' OR ' )
+            $Filter = $Filter.Trim( ' OR ' )
         }     
         
     
