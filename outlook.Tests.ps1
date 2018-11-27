@@ -57,7 +57,7 @@ InModuleScope $ModuleName {
 
             It "has Synopsis Help Section" {
 
-                 $H.Synopsis  | Should Not BeNullorEmpty
+                { $H.Synopsis }  | Should Not BeNullorEmpty
 
             }
 
