@@ -1,25 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="2" errors="0" failures="0" not-run="0" inconclusive="1" ignored="0" skipped="0" invalid="0" date="2018-11-23" time="14:34:08">
-  <environment user="appveyor" machine-name="APPVYR-WIN" cwd="C:\projects\outlook" user-domain="APPVYR-WIN" platform="Microsoft Windows Server 2012 R2 Datacenter|C:\windows|\Device\Harddisk0\Partition5" nunit-version="2.5.8.0" os-version="6.3.9600" clr-version="4.0.30319.42000" />
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="13" errors="0" failures="0" not-run="0" inconclusive="0" ignored="1" skipped="0" invalid="0" date="2018-11-27" time="10:03:42">
+  <environment user="600990" machine-name="BAHCND8310JPK" cwd="C:\Scripts\Outlook" user-domain="BAH" platform="Microsoft Windows 10 Enterprise|C:\Windows|\Device\Harddisk0\Partition4" nunit-version="2.5.8.0" os-version="10.0.16299" clr-version="4.0.30319.42000" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Inconclusive" success="True" time="0.9026" asserts="0" description="Pester">
+  <test-suite type="Powershell" name="Pester" executed="True" result="Ignored" success="True" time="0.5712" asserts="0">
     <results>
-      <test-suite type="TestFixture" name="C:\projects\outlook\outlook.Tests.ps1" executed="True" result="Inconclusive" success="True" time="0.9026" asserts="0" description="C:\projects\outlook\outlook.Tests.ps1">
+      <test-suite type="TestFixture" name="Outlook : Module Tests" executed="True" result="Success" success="True" time="0.0543" asserts="0" description="Outlook : Module Tests">
         <results>
-          <test-suite type="TestFixture" name="outlook : Module Tests" executed="True" result="Success" success="True" time="0.7581" asserts="0" description="outlook : Module Tests">
-            <results>
-              <test-case description="should have a test for each function" name="outlook : Module Tests.should have a test for each function" time="0.7581" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-          <test-suite type="TestFixture" name="outlook : Get-OutlookCalendarItem" executed="True" result="Inconclusive" success="True" time="0.1446" asserts="0" description="outlook : Get-OutlookCalendarItem">
-            <results>
-              <test-suite type="TestFixture" name="Output" executed="True" result="Inconclusive" success="True" time="0.1446" asserts="0" description="Output">
-                <results>
-                  <test-case description="Should Return a calander object" name="outlook : Get-OutlookCalendarItem.Output.Should Return a calander object" time="0.1446" asserts="0" success="True" result="Inconclusive" executed="True" />
-                </results>
-              </test-suite>
-            </results>
-          </test-suite>
+          <test-case description="should have a test for each function" name="Outlook : Module Tests.should have a test for each function" time="0.0543" asserts="0" success="True" result="Success" executed="True" />
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="Outlook : Get-OutlookCalendarItem" executed="True" result="Ignored" success="True" time="0.5168" asserts="0" description="Outlook : Get-OutlookCalendarItem">
+        <results>
+          <test-case description="has Synopsis Help Section" name="Outlook : Get-OutlookCalendarItem.has Synopsis Help Section" time="0.1036" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="has Synopsis Help Section that it not start with the command name" name="Outlook : Get-OutlookCalendarItem.has Synopsis Help Section that it not start with the command name" time="0.0043" asserts="0" success="True" result="Ignored" executed="False" />
+          <test-case description="has Description Help Section" name="Outlook : Get-OutlookCalendarItem.has Description Help Section" time="0.0234" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="has Parameters Help Section" name="Outlook : Get-OutlookCalendarItem.has Parameters Help Section" time="0.0228" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Example - Count should be greater than 0" name="Outlook : Get-OutlookCalendarItem.Example - Count should be greater than 0" time="0.0246" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="has Notes Help Section" name="Outlook : Get-OutlookCalendarItem.has Notes Help Section" time="0.0205" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="SHould throw an error if outlook is not installed" name="Outlook : Get-OutlookCalendarItem.SHould throw an error if outlook is not installed" time="0.0977" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should throw an error if end date is included with begin date" name="Outlook : Get-OutlookCalendarItem.Should throw an error if end date is included with begin date" time="0.0236" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should accept a date range" name="Outlook : Get-OutlookCalendarItem.Should accept a date range" time="0.0264" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should Return a calendar object" name="Outlook : Get-OutlookCalendarItem.Should Return a calendar object" time="0.0489" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should Return a Calendar object when using a filter" name="Outlook : Get-OutlookCalendarItem.Should Return a Calendar object when using a filter" time="0.0408" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="should return Calendar object when more than one categorie is included" name="Outlook : Get-OutlookCalendarItem.should return Calendar object when more than one categorie is included" time="0.0368" asserts="0" success="True" result="Success" executed="True" />
+          <test-case description="Should accept a date range and return a Calendar Object" name="Outlook : Get-OutlookCalendarItem.Should accept a date range and return a Calendar Object" time="0.0434" asserts="0" success="True" result="Success" executed="True" />
         </results>
       </test-suite>
     </results>

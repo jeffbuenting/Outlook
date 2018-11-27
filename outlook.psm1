@@ -91,26 +91,25 @@
             write-verbose "begindate = $BeginDate "
             Write-Verbose "enddate = $enddate"
             if ( $Filter -ne $Null ) {
-                $Filer += ' AND '
+                $Filert = "$Filter AND "
             }
 
            if ( $BeginDate -gt $EndDate ) {
-               $Filter += "[Start] < '$($BeginDate.ToString())' AND [End] > '$($EndDate.ToString())'"
+               $Filter = "$Filter[Start] < '$($BeginDate.ToString())' AND [End] > '$($EndDate.ToString())'"
            }
            Else {
-               $Filter += "[Start] > '$($BeginDate.ToString())' AND [End] < '$($EndDate.ToString())'"
+               $Filter = "$Filter[Start] > '$($BeginDate.ToString())' AND [End] < '$($EndDate.ToString())'"
            }
         }
                 
         # ----- Date Range
         If ( $Categories ) {
             if ( $Filter -ne $Null ) {
-                $Filert += ' AND '
+                $Filert = "$Filter AND "
             }
 
             Foreach ( $C in $Categories ) {
-                $Filter += "[Categories] = '$C'"
-                $Filter += ' OR '
+                $Filter = "$Filter[Categories] = '$C' OR "
             }
 
             # ----- Remove the last ' OR '
