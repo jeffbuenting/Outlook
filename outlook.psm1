@@ -28,6 +28,10 @@
 
             https://docs.microsoft.com/en-us/office/vba/api/outlook.oldefaultfolders
 
+        .Notes
+            Author : Jeff Buenting
+            Date : 2018 NOV 26
+
     #>
 
     [CmdletBinding()]
@@ -63,7 +67,8 @@
 
         # ----- This is how you reference the dynamic parameter
         $EndDate = $PSBoundParameters.EndDate
-    
+
+        
         Try {
             Write-Verbose "Connecting to Outlook"
 
@@ -86,15 +91,15 @@
             write-verbose "begindate = $BeginDate "
             Write-Verbose "enddate = $enddate"
             if ( $Filter -ne $Null ) {
-                $Filert += ' AND '
+                $Filer += ' AND '
             }
 
-            if ( $BeginDate > $EndDate ) {
-                $Filter += "[Start] < '$($BeginDate.ToString())' AND [End] > '$($EndDate.ToString())'"
-            }
-            Else {
-                $Filter += "[Start] > '$($BeginDate.ToString())' AND [End] < '$($EndDate.ToString())'"
-            }
+           if ( $BeginDate -gt $EndDate ) {
+               $Filter += "[Start] < '$($BeginDate.ToString())' AND [End] > '$($EndDate.ToString())'"
+           }
+           Else {
+               $Filter += "[Start] > '$($BeginDate.ToString())' AND [End] < '$($EndDate.ToString())'"
+           }
         }
                 
         # ----- Date Range

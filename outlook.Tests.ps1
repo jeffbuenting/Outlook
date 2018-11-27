@@ -184,7 +184,7 @@ InModuleScope $ModuleName {
             } 
 
             It "Should accept a date range and return a Calendar Object" {
-                Get-OutlookCalendarItem -BeginDate (Get-Date) -EndDate (get-date).adddays( -2) -verbose | Should beoftype PSObject
+                Get-OutlookCalendarItem -BeginDate (Get-Date) -EndDate (get-date).adddays( -2) | Should beoftype PSObject
             } 
 
         }
