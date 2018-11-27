@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="2" errors="0" failures="0" not-run="0" inconclusive="1" ignored="0" skipped="0" invalid="0" date="2018-11-23" time="14:34:08">
+  <environment user="appveyor" machine-name="APPVYR-WIN" cwd="C:\projects\outlook" user-domain="APPVYR-WIN" platform="Microsoft Windows Server 2012 R2 Datacenter|C:\windows|\Device\Harddisk0\Partition5" nunit-version="2.5.8.0" os-version="6.3.9600" clr-version="4.0.30319.42000" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Inconclusive" success="True" time="0.9026" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\projects\outlook\outlook.Tests.ps1" executed="True" result="Inconclusive" success="True" time="0.9026" asserts="0" description="C:\projects\outlook\outlook.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="outlook : Module Tests" executed="True" result="Success" success="True" time="0.7581" asserts="0" description="outlook : Module Tests">
+            <results>
+              <test-case description="should have a test for each function" name="outlook : Module Tests.should have a test for each function" time="0.7581" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="outlook : Get-OutlookCalendarItem" executed="True" result="Inconclusive" success="True" time="0.1446" asserts="0" description="outlook : Get-OutlookCalendarItem">
+            <results>
+              <test-suite type="TestFixture" name="Output" executed="True" result="Inconclusive" success="True" time="0.1446" asserts="0" description="Output">
+                <results>
+                  <test-case description="Should Return a calander object" name="outlook : Get-OutlookCalendarItem.Output.Should Return a calander object" time="0.1446" asserts="0" success="True" result="Inconclusive" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
