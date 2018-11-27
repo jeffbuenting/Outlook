@@ -65,7 +65,7 @@ InModuleScope $ModuleName {
 
             It "has Synopsis Help Section that it not start with the command name" {
 
-                { $H.Synopsis } | Should Not Match $H.Name
+                { $H.Synopsis } | Should Not Match ($H.Name)
 
             }
 
@@ -89,7 +89,7 @@ InModuleScope $ModuleName {
 
             it "Example - Count should be greater than 0"{
 
-                 { $H.examples.example  | Measure-Object | Select-Object -ExpandProperty Count } | Should BeGreaterthan 0
+                 { $H.examples.example } | Measure-Object | Select-Object -ExpandProperty Count | Should BeGreaterthan 0
 
             }
 
