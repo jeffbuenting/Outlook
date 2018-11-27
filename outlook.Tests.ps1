@@ -65,7 +65,7 @@ InModuleScope $ModuleName {
 
             It "has Synopsis Help Section that it not start with the command name" {
 
-                { $H.Synopsis } | Should Not Match ($H.Name)
+                 $H.Synopsis | Should Not Match $H.Name
 
             }
 
