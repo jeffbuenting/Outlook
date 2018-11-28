@@ -176,7 +176,7 @@ InModuleScope $ModuleName {
             } 
 
             It "Should Return a Calendar object when using a filter" {
-                Get-OutlookCalendarItem -Categories 'one' -Verbose  | Should beoftype PSObject
+                Get-OutlookCalendarItem -Categories 'one' | Should beoftype PSObject
             } 
 
             It "should return Calendar object when more than one categorie is included" {

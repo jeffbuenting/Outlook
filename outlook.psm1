@@ -65,14 +65,14 @@
 
     Process {
 
-        # ----- This is how you reference the dynamic parameter
+        # ----- This is how you reference the dynamic parameter with $PSBoundPa
         $EndDate = $PSBoundParameters.EndDate
 
         
         Try {
             Write-Verbose "Connecting to Outlook"
 
-            $Outlook = new-object -comobject outlook.application -ErrorAction Stop
+            $Outlook = new-object -comobject outlook.application -ErrorAction Stop -Verbose:$false
         
         }
         Catch {
@@ -84,28 +84,32 @@
         $namespace = $outlook.GetNameSpace("MAPI")
        
         # ----- Build FIlter
+        # ----- https://docs.microsoft.com/en-us/office/vba/api/Outlook.Items.Restrict
         $Filter = @()
 
         # ----- Date Range
+        # ----- Date format needs to be a specific form.  per above website
         if ( $BeginDate ) {
-            write-verbose "begindate = $BeginDate "
+            write-verbose "begindate = $(get-date $BeginDate -UFormat '%m/%d/%y %I:%M %p') "
             Write-Verbose "enddate = $enddate"
             if ( $Filter -ne $Null ) {
                 $Filert = "$Filter AND "
             }
 
            if ( $BeginDate -gt $EndDate ) {
-               $Filter = "$Filter[Start] < '$($BeginDate.ToString())' AND [End] > '$($EndDate.ToString())'"
+               $Filter = "[Start] <= '$(Get-Date $BeginDate -Uformat "%m/%d/%y %I:%M %p")' AND [End] >= '$(Get-Date $EndDate -Uformat "%m/%d/%y %I:%M %p")'"
            }
            Else {
-               $Filter = "$Filter[Start] > '$($BeginDate.ToString())' AND [End] < '$($EndDate.ToString())'"
+                
+                $Filter = "[Start] >= '$(Get-Date $BeginDate -Uformat "%m/%d/%y %I:%M %p")' AND [End] <= '$(Get-Date $EndDate -Uformat "%m/%d/%y %I:%M %p")'"
            }
         }
-                
-        # ----- Date Range
+
+        # ----- categories
         If ( $Categories ) {
+            Write-Verbose "Adding Categories to filter"
             if ( $Filter -ne $Null ) {
-                $Filert = "$Filter AND "
+                $Filter = "$Filter AND "
             }
 
             Foreach ( $C in $Categories ) {
