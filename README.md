@@ -3,7 +3,7 @@ Outlook Powershell Cmdlets
 
 ### Master
 
-Version: 1.0.12
+Version: 1.0.13
 
 [![Build status](https://ci.appveyor.com/api/projects/status/j9tauw2x1d3mbbc8/branch/master?svg=true)](https://ci.appveyor.com/project/jeffbuenting/outlook/branch/master)
 
